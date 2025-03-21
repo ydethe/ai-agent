@@ -8,14 +8,37 @@ dynamic = ["version"]
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [
+    { name = "Yann de Thé", email = "yann@gmail.com" },
+]
 dependencies = [
     "pydantic-ai-slim[logfire,openai]>=0.0.43",
     "pydantic-settings>=2.8.1",
 ]
 
+[project.urls]
+"Bug Tracker" = "https://github.com/ydethe/ai-agent/-/issues"
+Homepage = "https://github.com/ydethe/ai-agent"
+Source = "https://github.com/ydethe/ai-agent"
+
 [dependency-groups]
 dev = [
-    "black>=25.1.0",
+    "black==22.3.0",
+    "ipython>=8.30.0",
+    "pre-commit>=4.0.1",
+]
+doc = [
+    "pdoc3>=0.11.3",
+    "pylint>=3.3.2",
+]
+test = [
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+    "pytest-html>=4.1.1",
+    "pytest-instafail>=0.5.0",
+    "pytest-mock>=3.14.0",
+    "pytest-picked>=0.5.1",
+    "pytest-sugar>=1.0.0",
 ]
 
 [tool.pylint.format]
@@ -31,3 +54,5 @@ resolution = "highest"
 [tool.hatch.version]
 source = "uv-dynamic-versioning"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai-agent"]

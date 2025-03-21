@@ -17,12 +17,10 @@ def test_func():
         ),
     )
 
-
     @roulette_agent.tool
     async def roulette_wheel(ctx: RunContext[int], square: int) -> str:
         """check if the square is a winner"""
         return "winner" if square == ctx.deps else "loser"
-
 
     # Run the agent
     success_number = 18
