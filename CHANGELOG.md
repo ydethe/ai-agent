@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- insertion marker -->
 ## Unreleased
 
-<small>[Compare with latest]()</small>
+<small>[Compare with latest](https://github.com/ydethe/ai-agent/compare/fae0c52ebf88e98cecdd1523f147f490fb1df837...HEAD)</small>
+
+### Added
+
+- Added pre-commit ([bc553ef](https://github.com/ydethe/ai-agent/commit/bc553ef32deba4c3ca3c72919df2646de4c80ed2) by Yann de Thé).
 
 <!-- insertion marker -->

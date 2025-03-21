@@ -1,16 +1,13 @@
-[build-system]
-requires = ["hatchling", "uv-dynamic-versioning"]
-build-backend = "hatchling.build"
+# uv init --name ai-agent --no-description --vcs git --build-backend setuptools --author-from git --no-workspace
 
 [project]
 name = "ai-agent"
 dynamic = ["version"]
-description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.11"
 authors = [
-    { name = "Yann de Thé", email = "yann@gmail.com" },
+    { name = "Yann de Thé", email = "ydethe@gmail.com" }
 ]
+requires-python = ">=3.11"
 dependencies = [
     "pydantic-ai-slim[logfire,openai]>=0.0.43",
     "pydantic-settings>=2.8.1",
@@ -20,6 +17,13 @@ dependencies = [
 "Bug Tracker" = "https://github.com/ydethe/ai-agent/-/issues"
 Homepage = "https://github.com/ydethe/ai-agent"
 Source = "https://github.com/ydethe/ai-agent"
+
+[project.scripts]
+ai-agent = "ai_agent:main"
+
+[build-system]
+requires = ["setuptools>=61", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 dev = [
@@ -48,11 +52,23 @@ max-line-length = 100
 line-length = 100
 target-version = ['py38']
 
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+    "--html=htmldoc/tests/report.html",
+    "--self-contained-html",
+    "--junitxml=htmldoc/junit.xml",
+    "--cov-config=tests/coverage.conf",
+    "--cov={{python_package_import_name}}",
+    "--doctest-modules"
+]
+testpaths = [
+    "tests/",
+]
+
 [tool.uv]
 resolution = "highest"
 
-[tool.hatch.version]
-source = "uv-dynamic-versioning"
+[tool.setuptools_scm]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/ai-agent"]
+
